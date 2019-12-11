@@ -3,4 +3,4 @@ HashKnownHosts yes
 GSSAPIAuthentication yes
 GSSAPIDelegateCredentials no
 PasswordAuthentication no
-IdentifyFile ~/.shh/holberton
+IdentifyFile ~/.ssh/holberton
