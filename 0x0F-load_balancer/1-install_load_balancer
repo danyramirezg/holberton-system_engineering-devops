@@ -4,14 +4,13 @@ sudo apt-get update
 sudo apt-get install -y haproxy=1.8.\*
 # Distribute requests using a roundrobin algorithm
 
-echo frontend lb-01
+echo "frontend lb-01
   bind *:80
   mode http
   default_backend web-backend
-sudo service haproxy restart
 
 echo backend web-backend
    balance roundrobin
    server web01 35.237.153.43:80 check
-   server web02 35.229.32.216:80 check >>/etc/haproxy/haproxy.cfg
+   server web02 35.229.32.216:80 check" >>/etc/haproxy/haproxy.cfg
 sudo service haproxy restart
