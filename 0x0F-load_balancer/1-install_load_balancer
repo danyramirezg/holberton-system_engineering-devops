@@ -1,13 +1,15 @@
 #!/usr/bin/env bash
 # Install and configure HAproxy on lb-01 server
-sudo apt-get update
-sudo apt-get install -y haproxy=1.8.\*
+
+sudo apt-get -y update
+sudo apt-get -y install haproxy=1.6.\* 
+
 # Distribute requests using a roundrobin algorithm
 
 echo "frontend lb-01
 	bind *:80
 	mode http
-	option forwardfor  
+	stats uri /haproxy?stats 
 	default_backend web-backend
 
 backend web-backend
