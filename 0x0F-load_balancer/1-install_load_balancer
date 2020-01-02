@@ -10,7 +10,7 @@ echo "frontend lb-01
 	option forwardfor  
 	default_backend web-backend
 
-echo backend web-backend
+backend web-backend
 	balance roundrobin
 	server web01 35.237.153.43:80 check
 	server web02 35.229.32.216:80 check" >>/etc/haproxy/haproxy.cfg
