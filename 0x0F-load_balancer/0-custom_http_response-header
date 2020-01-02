@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
 # Install nginx web server
 apt-get -y update && apt-get install -y nginx
-variable="add_header X-Served-By $HOSTNAME",
+variable="add_header X-Served-By $HOSTNAME;"
 sed -i "24i $variable" /etc/nginx/sites-available/default
 service nginx restart
+
