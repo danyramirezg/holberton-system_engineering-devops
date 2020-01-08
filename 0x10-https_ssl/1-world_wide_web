@@ -1,16 +1,17 @@
 #!/usr/bin/env bash
-function ()
+# Bash script that will display information about subdomains. 
+information ()
 {
 	domain="$1"
 	subdomain="$2"
 
 dig "$subdomain.$domain" | awk '/;; ANSWER SECTION:/{getline; print "The subdomain " $1 " is a " $4 " record and points to " $5}'
 }
-var = ("www" "lb-01" "web-01" "web-02")
-for subdomain in "www" "lb-01" "web-01" "web-02"
+#ar = ("www" "lb-01" "web-01" "web-02")
+for subdomain in "www" "lb-01" "web-01" "web-02" 
 do
-	if [ z "$2" ] || [ "$2" == "$subdomain" ];
+	if [ -z "$2" ] || [ "$2" == "$subdomain" ];
 	then
-		function "$1" "$subdomain"
+		information "$1" "$subdomain"
 	fi
 done
