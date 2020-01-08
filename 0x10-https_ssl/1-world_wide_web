@@ -5,9 +5,9 @@ information ()
 	domain="$1"
 	subdomain="$2"
 
-dig "$subdomain.$domain" | awk '/;; ANSWER SECTION:/{getline; print "The subdomain " $1 " is a " $4 " record and points to " $5}'
+dig "$subdomain.$domain" | awk -v subdomain="$2" '/;; ANSWER SECTION:/{getline; print "The subdomain "subdomain" is a " $4 " record and points to " $5}'
 }
-#ar = ("www" "lb-01" "web-01" "web-02")
+
 for subdomain in "www" "lb-01" "web-01" "web-02" 
 do
 	if [ -z "$2" ] || [ "$2" == "$subdomain" ];
