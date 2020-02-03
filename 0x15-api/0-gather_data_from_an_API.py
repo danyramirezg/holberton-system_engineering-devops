@@ -6,18 +6,17 @@ import requests
 from sys import argv
 
 if __name__ == "__main__":
-    var = requests.get(
-        "https://jsonplaceholder.typicode.com/users/" + argv[1]).json()
-    employee_name = var["name"]
-    number_total_tasks = len(requests.get("https://jsonplaceholder.typicode"
-                                          ".com/todos?userId={}".
-                                          format(argv[1])).json())
-    number_done_tasks = len(requests.get("https://jsonplaceholder.typicode"
-                                         ".com/todos?userId={}&&completed=true"
-                                         .format(argv[1])).json())
 
-    topic = requests.get("https://jsonplaceholder.typicode.com/todos?userId"
-                         "={}&&completed=true".format(argv[1])).json()
+    url = "https://jsonplaceholder.typicode.com/"
+    var = requests.get("{}users/{}".format(url, argv[1])).json()
+    employee_name = var["name"]
+    number_total_tasks = len(requests.get("{}todos?userId={}"
+                                          .format(url, argv[1])).json())
+    number_done_tasks = len(requests.get("{}todos?userId={}&&completed=true"
+                                         .format(url, argv[1])).json())
+
+    topic = requests.get("{}todos?userId={}&&completed=true"
+                         .format(url, argv[1])).json()
     result = "Employee {} is done with tasks({}/{}):".format(
         employee_name,
         number_done_tasks,
