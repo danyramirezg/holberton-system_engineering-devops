@@ -23,4 +23,4 @@ if __name__ == "__main__":
     topic = requests.get("{}todos?userId={}&&completed=true"
                          .format(url, argv[1])).json()
     for i in topic:
-        print("\t" + i["title"])
+        print("\t " + i["title"])
