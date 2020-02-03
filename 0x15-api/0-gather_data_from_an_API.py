@@ -19,7 +19,6 @@ if __name__ == "__main__":
                                          .format(url, argv[1])).json())
     print("Employee {} is done with tasks({}/{}):"
           .format(employee_name, number_done_tasks, number_total_tasks))
-
     topic = requests.get("{}todos?userId={}&&completed=true"
                          .format(url, argv[1])).json()
     for i in topic:
