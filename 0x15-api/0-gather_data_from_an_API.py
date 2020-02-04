@@ -23,4 +23,4 @@ if __name__ == "__main__":
         number_total_tasks)
     print(result)
     for i in topic:
-        print("\t" + i["title"])
+        print("\t " + i["title"])
