@@ -7,6 +7,9 @@ import requests
 
 
 def top_ten(subreddit):
+    """If not a valid subreddit, print None.
+NOTE: Invalid subreddits may return a redirect to search results."""
+
     url = "https://www.reddit.com/r/{}/hot.json".format(subreddit)
     header = \
         {"User-Agent": "Mozilla/5.0 (Windows NT 6.1; Win64; x64; rv:47.0)"}
