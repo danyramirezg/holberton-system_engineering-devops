@@ -11,7 +11,8 @@ titles = []
 def recurse(subreddit, hot_list=[], after=None):
     if after:
         url = \
-            "https://www.reddit.com/r/{}/hot.json?limit=100&after={}".format(subreddit, after)
+            "https://www.reddit.com/r/" \
+            "{}/hot.json?limit=100&after={}".format(subreddit, after)
     else:
         url = "https://www.reddit.com/r/{}/hot.json".format(subreddit)
     header = \
@@ -20,9 +21,15 @@ def recurse(subreddit, hot_list=[], after=None):
     resp = requests.get(url, headers=header)
     # "https://www.reddit.com/r/{}/hot.json"
 
+    if resp.status_code != 200:
+        return None
+
     if resp.status_code == 200:
         data = resp.json().get("data").get("children")
         after = resp.json().get("data").get("after")
+
+        if data is None:
+            return None
 
         for children in data:
             tittle = children.get("data").get("title")
@@ -32,5 +39,5 @@ def recurse(subreddit, hot_list=[], after=None):
     # print(after)
 
     if after:
-        recurse('programming', after=after)
+        recurse("{}".format(subreddit), after=after)
     return hot_list
