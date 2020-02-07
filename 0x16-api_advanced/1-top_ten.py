@@ -10,7 +10,7 @@ def top_ten(subreddit):
     """If not a valid subreddit, print None.
 NOTE: Invalid subreddits may return a redirect to search results."""
 
-    url = "https://www.reddit.com/r/{}/hot.json".format(subreddit)
+    url = "https://www.reddit.com/r/{}/hot.json?limit=10".format(subreddit)
     header = \
         {"User-Agent": "Mozilla/5.0 (Windows NT 6.1; Win64; x64; rv:47.0)"}
 
@@ -20,8 +20,8 @@ NOTE: Invalid subreddits may return a redirect to search results."""
         data = resp.json().get("data").get("children")
 
         for children in data:
-            tittle = children.get("data").get("title")
-            print(tittle)
+            title = children.get("data").get("title")
+            print(title)
 
     else:
         print('None')
