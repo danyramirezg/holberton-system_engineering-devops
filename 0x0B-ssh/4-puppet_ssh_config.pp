@@ -5,7 +5,7 @@
 file_line { 'use the private key':
   ensure => 'present',
   path => '/etc/ssh/ssh_config',
-  line => 'IdentifyFile ~/.ssh/holberton',
+  line => 'IdentityFile ~/.ssh/holberton',
 }
 
 file_line { 'refuse the authentication':
