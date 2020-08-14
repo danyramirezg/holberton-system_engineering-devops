@@ -1,6 +1,10 @@
 #!/usr/bin/env bash
 # Add a custom HTTP header with Puppet
 
+exec { 'conf_server':
+	command => 'sudo apt-get update',
+}
+
 package { 'nginx':
     ensure => installed,
 }
